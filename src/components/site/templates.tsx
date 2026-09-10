@@ -371,6 +371,17 @@ export function IndustryTemplate({ page }: { page: ResolvedPage }) {
         </section>
       ) : null}
 
+      {node.benefits?.length ? (
+        <section className="border-t border-line bg-secondary/40">
+          <div className="mx-auto max-w-[1400px] px-6 py-14">
+            <SectionHeading kicker="Planning" title="What the deployment plan covers" />
+            <div className="mt-6">
+              <BenefitGrid benefits={node.benefits} />
+            </div>
+          </div>
+        </section>
+      ) : null}
+
       <section className="border-t border-line">
         <div className="mx-auto max-w-[1400px] px-6 py-14">
           <SectionHeading kicker="Solutions" title="Relevant solutions" />
@@ -470,7 +481,9 @@ export function PostTemplate({ page }: { page: ResolvedPage }) {
     <>
       <Breadcrumbs items={crumbs(page)} />
       <article className="mx-auto max-w-[1400px] px-6 py-14">
-        <p className="label-mono text-accent">Blog · {node.date}</p>
+        <p className="label-mono text-accent">
+          Blog · <time dateTime={node.date}>{node.date}</time>
+        </p>
         <h1 className="mt-4 max-w-[30ch] text-5xl font-bold leading-[0.95] text-balance">
           {node.title}
         </h1>

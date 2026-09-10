@@ -89,20 +89,16 @@ function ContactPage() {
               </div>
               <div className="flex items-baseline justify-between gap-4 py-3">
                 <dt className="label-mono text-steel">Phone</dt>
-                <dd className="text-muted-foreground">To be supplied</dd>
-              </div>
-              <div className="flex items-baseline justify-between gap-4 py-3">
-                <dt className="label-mono text-steel">Email</dt>
-                <dd className="text-muted-foreground">To be supplied</dd>
-              </div>
-              <div className="flex items-baseline justify-between gap-4 py-3">
-                <dt className="label-mono text-steel">Address</dt>
-                <dd className="text-muted-foreground">To be supplied</dd>
+                <dd>
+                  <a href="tel:+18004435212" className="font-medium hover:text-accent">
+                    +1 (800) 443-5212
+                  </a>
+                </dd>
               </div>
             </dl>
             <p className="mt-4 text-sm text-muted-foreground text-pretty">
-              Send us your real contact details and hours and we will publish them here with local
-              business markup.
+              The operations team is available by phone 24 hours a day, 7 days a week for quotes,
+              active deployments and urgent site requirements.
             </p>
           </aside>
         </div>

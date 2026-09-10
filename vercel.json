@@ -1,0 +1,267 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/equipment-rental/restroom-trailers/portable-restroom-trailers-in-:location",
+      "destination": "/support-facility-trailers/restroom-trailers",
+      "statusCode": 301
+    },
+    {
+      "source": "/catering",
+      "destination": "/specialty-solutions/catering-facilities",
+      "statusCode": 301
+    },
+    {
+      "source": "/containerized-shower-trailers",
+      "destination": "/support-facility-trailers/shower-trailers",
+      "statusCode": 301
+    },
+    {
+      "source": "/emergency-migrant-containerized-living-spaces",
+      "destination": "/specialty-solutions/emergency-response-facilities",
+      "statusCode": 301
+    },
+    {
+      "source": "/emergency-workforce-housing-in-california",
+      "destination": "/temporary-facilities/workforce-housing/workforce-housing-facilities",
+      "statusCode": 301
+    },
+    {
+      "source": "/equipment-rental/breakroom-trailer",
+      "destination": "/temporary-facilities/temporary-facility-rentals",
+      "statusCode": 301
+    },
+    {
+      "source": "/equipment-rental/command-center-trailers",
+      "destination": "/temporary-facilities/command-center-trailers",
+      "statusCode": 301
+    },
+    {
+      "source": "/equipment-rental/decontamination-trailers",
+      "destination": "/specialty-solutions/emergency-response-facilities",
+      "statusCode": 301
+    },
+    {
+      "source": "/equipment-rental/dump-rental",
+      "destination": "/support-facility-trailers/waste-tank-trailers",
+      "statusCode": 301
+    },
+    {
+      "source": "/equipment-rental/generator-trailers",
+      "destination": "/specialty-solutions/turnkey-facility-solutions",
+      "statusCode": 301
+    },
+    {
+      "source": "/equipment-rental/mobile-office-trailers",
+      "destination": "/temporary-facilities/modular-office-trailers",
+      "statusCode": 301
+    },
+    {
+      "source": "/equipment-rental/multi-trailer",
+      "destination": "/specialty-solutions/turnkey-facility-solutions",
+      "statusCode": 301
+    },
+    {
+      "source": "/equipment-rental/port-potties-and-port-johns",
+      "destination": "/support-facility-trailers/restroom-trailers",
+      "statusCode": 301
+    },
+    {
+      "source": "/equipment-rental/ramp-rental",
+      "destination": "/specialty-solutions/turnkey-facility-solutions",
+      "statusCode": 301
+    },
+    {
+      "source": "/equipment-rental/restroom-trailers",
+      "destination": "/support-facility-trailers/restroom-trailers",
+      "statusCode": 301
+    },
+    {
+      "source": "/equipment-rental/shower-trailer",
+      "destination": "/support-facility-trailers/shower-trailers",
+      "statusCode": 301
+    },
+    {
+      "source": "/equipment-rental/shower-trailer/portable-shower-trailers-in-new-jersey-usa",
+      "destination": "/support-facility-trailers/shower-trailers",
+      "statusCode": 301
+    },
+    {
+      "source": "/equipment-rental/sleeper-trailers",
+      "destination": "/temporary-facilities/bunkhouse-trailers",
+      "statusCode": 301
+    },
+    {
+      "source": "/equipment-rental/stair-rental",
+      "destination": "/specialty-solutions/turnkey-facility-solutions",
+      "statusCode": 301
+    },
+    {
+      "source": "/equipment-rental/waste-container",
+      "destination": "/support-facility-trailers/waste-tank-trailers",
+      "statusCode": 301
+    },
+    {
+      "source": "/equipment-rental/wastewater-and-freshwater-container",
+      "destination": "/support-facility-trailers/waste-tank-trailers",
+      "statusCode": 301
+    },
+    {
+      "source": "/government/correctional-facilities",
+      "destination": "/industries/government",
+      "statusCode": 301
+    },
+    {
+      "source": "/houston-texas-mobile-kitchen-rental",
+      "destination": "/mobile-kitchens/mobile-kitchen-trailers",
+      "statusCode": 301
+    },
+    {
+      "source": "/mobile-kitchen-trailer-rental",
+      "destination": "/mobile-kitchens/mobile-kitchen-trailers",
+      "statusCode": 301
+    },
+    {
+      "source": "/modular-temporary-camp-facilities",
+      "destination": "/temporary-facilities/base-camp-facilities",
+      "statusCode": 301
+    },
+    {
+      "source": "/modular-temporary-workforce-housing-facilities",
+      "destination": "/temporary-facilities/workforce-housing/workforce-housing-facilities",
+      "statusCode": 301
+    },
+    {
+      "source": "/portable-dishwashing-trailer-rental",
+      "destination": "/support-facility-trailers/dishwashing-trailers",
+      "statusCode": 301
+    },
+    {
+      "source": "/remote-basecamp-housing-service-company",
+      "destination": "/temporary-facilities/remote-camp-facilities",
+      "statusCode": 301
+    },
+    {
+      "source": "/remote-containerized-military-berthing-solution",
+      "destination": "/specialty-solutions/military-government-facilities",
+      "statusCode": 301
+    },
+    {
+      "source": "/remote-containerized-military-berthing-solution-for-rent",
+      "destination": "/specialty-solutions/military-government-facilities",
+      "statusCode": 301
+    },
+    {
+      "source": "/remote-housing-facilities",
+      "destination": "/temporary-facilities/workforce-housing/remote-workforce-housing",
+      "statusCode": 301
+    },
+    {
+      "source": "/remote-temporary-workforce-housing-facilities-rental",
+      "destination": "/temporary-facilities/workforce-housing/remote-workforce-housing",
+      "statusCode": 301
+    },
+    {
+      "source": "/remote-workforce-house-company-in-alabama",
+      "destination": "/temporary-facilities/workforce-housing/remote-workforce-housing",
+      "statusCode": 301
+    },
+    {
+      "source": "/remote-workforce-house-company-in-hawaii",
+      "destination": "/temporary-facilities/workforce-housing/remote-workforce-housing",
+      "statusCode": 301
+    },
+    {
+      "source": "/remote-workforce-housing-facilities",
+      "destination": "/temporary-facilities/workforce-housing/remote-workforce-housing",
+      "statusCode": 301
+    },
+    {
+      "source": "/remote-workforce-housing-in-alabama",
+      "destination": "/temporary-facilities/workforce-housing/remote-workforce-housing",
+      "statusCode": 301
+    },
+    {
+      "source": "/remote-workforce-housing-rentals-in-arizona",
+      "destination": "/temporary-facilities/workforce-housing/remote-workforce-housing",
+      "statusCode": 301
+    },
+    {
+      "source": "/remote-workforce-housing-services-in-alaska",
+      "destination": "/temporary-facilities/workforce-housing/remote-workforce-housing",
+      "statusCode": 301
+    },
+    {
+      "source": "/remote-workforce-housing-services-in-idaho",
+      "destination": "/temporary-facilities/workforce-housing/remote-workforce-housing",
+      "statusCode": 301
+    },
+    {
+      "source": "/restroom-trailer-rental",
+      "destination": "/support-facility-trailers/restroom-trailers",
+      "statusCode": 301
+    },
+    {
+      "source": "/shop",
+      "destination": "/mobile-kitchens",
+      "statusCode": 301
+    },
+    {
+      "source": "/shower-trailer-rental",
+      "destination": "/support-facility-trailers/shower-trailers",
+      "statusCode": 301
+    },
+    {
+      "source": "/sleeper-trailer-rental",
+      "destination": "/temporary-facilities/bunkhouse-trailers",
+      "statusCode": 301
+    },
+    {
+      "source": "/temporary-remote-workforce-housing-services-in-arkansas",
+      "destination": "/temporary-facilities/workforce-housing/remote-workforce-housing",
+      "statusCode": 301
+    },
+    {
+      "source": "/temporary-remote-workforce-housing-services-in-illinois",
+      "destination": "/temporary-facilities/workforce-housing/remote-workforce-housing",
+      "statusCode": 301
+    },
+    {
+      "source": "/temporary-remote-workforce-housing-services-in-massachusetts",
+      "destination": "/temporary-facilities/workforce-housing/remote-workforce-housing",
+      "statusCode": 301
+    },
+    {
+      "source": "/temporary-remote-workforce-housing-services-in-michigan",
+      "destination": "/temporary-facilities/workforce-housing/remote-workforce-housing",
+      "statusCode": 301
+    },
+    {
+      "source": "/temporary-workforce-housing-facilities",
+      "destination": "/temporary-facilities/workforce-housing/workforce-housing-facilities",
+      "statusCode": 301
+    },
+    {
+      "source": "/workforce-housing-shelters-in-colorado",
+      "destination": "/temporary-facilities/workforce-housing/workforce-housing-facilities",
+      "statusCode": 301
+    },
+    {
+      "source": "/wp-content/uploads/2023/04/2-Food-Service-Design.png",
+      "destination": "/images/food-service.png",
+      "statusCode": 301
+    }
+  ],
+  "headers": [
+    {
+      "source": "/images/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}

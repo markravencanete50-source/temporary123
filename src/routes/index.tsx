@@ -6,7 +6,7 @@ import { CardGrid, LinkList, QuoteBand, SectionHeading } from "@/components/site
 import { SiteLink } from "@/components/site/SiteLink";
 import { catalog } from "@/data/catalog";
 import { childrenOf, resolvePath } from "@/lib/catalog";
-import { jsonLd, pageMeta, SITE_NAME } from "@/lib/seo";
+import { jsonLd, organizationSchema, pageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -16,16 +16,7 @@ export const Route = createFileRoute("/")({
         "B2B rental of mobile kitchen trailers, support and sanitation trailers, and temporary facilities — delivered, positioned and connected on site nationwide.",
       path: "/",
     }),
-    scripts: [
-      jsonLd({
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        name: SITE_NAME,
-        url: "/",
-        description:
-          "Rental of temporary mobile kitchens, support trailers and facility units for construction, healthcare, government, response and remote operations.",
-      }),
-    ],
+    scripts: [jsonLd(organizationSchema())],
   }),
   component: Home,
 });

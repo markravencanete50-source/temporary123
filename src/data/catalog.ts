@@ -12,13 +12,7 @@
  * Spec rows carry the placeholder value `TBD` until real figures are supplied.
  */
 
-export type NodeKind =
-  | "category"
-  | "service"
-  | "variation"
-  | "industry"
-  | "resource"
-  | "post";
+export type NodeKind = "category" | "service" | "variation" | "industry" | "resource" | "post";
 
 export interface Spec {
   label: string;
@@ -141,8 +135,14 @@ function svc(
   return { slug, title, kind: "service", summary, ...extra };
 }
 
-function industry(slug: string, title: string, summary: string, intro: string[]): PageNode {
-  return { slug, title, kind: "industry", summary, intro };
+function industry(
+  slug: string,
+  title: string,
+  summary: string,
+  intro: string[],
+  extra: Partial<PageNode> = {},
+): PageNode {
+  return { slug, title, kind: "industry", summary, intro, ...extra };
 }
 
 /* ------------------------------------------------------------------ */
@@ -347,7 +347,8 @@ const mobileKitchens: PageNode = {
           },
           {
             title: "Complete facility",
-            description: "Cooking, storage and warewashing planned as one workflow, not separate hires.",
+            description:
+              "Cooking, storage and warewashing planned as one workflow, not separate hires.",
           },
         ],
         applications: [
@@ -429,8 +430,10 @@ const restroomTrailers: PageNode = {
   title: "Restroom Trailers",
   kind: "service",
   kicker: "Support & Facility Trailers",
-  summary:
-    "Multi-stall restroom trailers for job sites, events and long-term facility support.",
+  summary: "Multi-stall restroom trailers for job sites, events and long-term facility support.",
+  metaTitle: "Restroom Trailer Rentals Nationwide",
+  metaDescription:
+    "Rent climate-controlled restroom trailers for construction sites, events and temporary facilities, with delivery and scheduled servicing nationwide.",
   intro: [
     "Restroom trailers provide plumbed, climate-controlled sanitation for sites and events where permanent facilities are unavailable or insufficient.",
     "Stall counts and lengths vary by unit. Water supply, waste handling and servicing frequency are planned with the rental.",
@@ -472,6 +475,14 @@ const restroomTrailers: PageNode = {
       q: "Do you handle waste servicing?",
       a: "Servicing is quoted with the unit and scheduled against expected occupancy.",
     },
+    {
+      q: "What site access and utilities are required?",
+      a: "We confirm the delivery route, level placement area, power, fresh water and waste plan before dispatch. Tank-supported configurations are available where fixed services are limited.",
+    },
+    {
+      q: "Can restroom trailers be combined with showers?",
+      a: "Yes. Restroom, shower, handwashing and waste capacity can be planned as one sanitation package for the same site and schedule.",
+    },
   ],
   relatedPaths: [
     "/support-facility-trailers/shower-trailers",
@@ -493,9 +504,26 @@ const showerTrailers: PageNode = {
   kicker: "Support & Facility Trailers",
   summary:
     "Private shower stalls with hot water for camps, response operations and long-duration sites.",
+  metaTitle: "Portable Shower Trailer Rentals Nationwide",
+  metaDescription:
+    "Rent private, climate-controlled shower trailers with hot water for workforce camps, emergency response and long-term projects across the United States.",
   intro: [
     "Shower trailers give crews and residents private, heated washing facilities on sites with no permanent plumbing.",
     "Stall counts, water heating and waste handling are planned around occupancy and shift patterns.",
+  ],
+  benefits: [
+    {
+      title: "Private facilities",
+      description: "Individual shower and changing areas support daily use by rotating crews.",
+    },
+    {
+      title: "Hot water planned to demand",
+      description: "Heating and storage are matched to occupancy, shifts and recovery time.",
+    },
+    {
+      title: "Complete water plan",
+      description: "Fresh water, grey water and servicing are scoped before the unit arrives.",
+    },
   ],
   equipment: [
     "Private shower stalls with changing space",
@@ -510,6 +538,16 @@ const showerTrailers: PageNode = {
     "Long-duration industrial projects",
   ],
   specs: [...trailerSpecs(), ...utilitySpecs()],
+  faqs: [
+    {
+      q: "How many shower stalls does a site need?",
+      a: "We size the facility from peak shift demand, the shower window and the time available for hot-water recovery and cleaning.",
+    },
+    {
+      q: "Can a shower trailer operate without permanent plumbing?",
+      a: "Yes. Fresh-water storage, pumping and grey-water holding can be included when permanent connections are unavailable.",
+    },
+  ],
   relatedPaths: [
     "/support-facility-trailers/restroom-trailers",
     "/support-facility-trailers/restroom-shower-combo-trailers",
@@ -541,8 +579,27 @@ const supportFacilityTrailers: PageNode = {
       "Dishwashing Trailers",
       "High-throughput warewashing to keep pace with a full production kitchen.",
       {
+        metaTitle: "Commercial Dishwashing Trailer Rentals",
+        metaDescription:
+          "Rent a commercial dishwashing trailer for temporary kitchens, institutional dining and events, with delivery, utilities and workflow planned nationwide.",
         intro: [
           "Dishwashing trailers take warewashing out of the cooking space, protecting throughput and hygiene separation during high-volume service.",
+        ],
+        benefits: [
+          {
+            title: "Separate clean and soiled flow",
+            description:
+              "Dedicated landing areas protect hygiene and keep the kitchen line moving.",
+          },
+          {
+            title: "Matched to meal volume",
+            description: "Machine capacity and staffing space are planned around peak service.",
+          },
+          {
+            title: "Connected as one system",
+            description:
+              "Power, hot water, drainage and waste handling are coordinated before delivery.",
+          },
         ],
         equipment: [
           "Commercial dish machine",
@@ -556,6 +613,16 @@ const supportFacilityTrailers: PageNode = {
           "Festival and event kitchens",
         ],
         specs: [...trailerSpecs(), ...utilitySpecs()],
+        faqs: [
+          {
+            q: "Can the dishwashing trailer run beside a mobile kitchen?",
+            a: "Yes. The units are positioned to create a practical soiled-return and clean-service route between warewashing and production.",
+          },
+          {
+            q: "What determines dishwashing capacity?",
+            a: "Service ware, covers per peak hour, rack cycle time and the available hot-water and drainage services determine the required configuration.",
+          },
+        ],
         relatedPaths: [
           "/mobile-kitchens/mobile-kitchen-trailers",
           "/support-facility-trailers/sink-trailers",
@@ -576,11 +643,7 @@ const supportFacilityTrailers: PageNode = {
           "Shelving options",
           "Temperature monitoring",
         ],
-        applications: [
-          "Kitchen deployments",
-          "Event catering",
-          "Cold chain overflow",
-        ],
+        applications: ["Kitchen deployments", "Event catering", "Cold chain overflow"],
         specs: [...trailerSpecs(), { label: "Temperature range", value: TBD }],
         relatedPaths: [
           "/support-facility-trailers/refrigerated-containers",
@@ -696,12 +759,38 @@ const supportFacilityTrailers: PageNode = {
       "Waste Tank Trailers",
       "Holding tanks that keep sanitation and kitchen units running between services.",
       {
+        metaTitle: "Waste and Water Tank Trailer Rentals",
+        metaDescription:
+          "Add fresh-water and waste holding capacity to temporary kitchens, restrooms and shower trailers, with connections and servicing planned for your site.",
         intro: [
           "Waste tank trailers add holding capacity so restroom, shower and kitchen units stay in service longer between scheduled pump-outs.",
+        ],
+        benefits: [
+          {
+            title: "Longer service intervals",
+            description:
+              "Additional holding capacity reduces interruption between scheduled pump-outs.",
+          },
+          {
+            title: "Planned connections",
+            description:
+              "Tank location, hose routes and service access are coordinated with the site layout.",
+          },
+        ],
+        applications: [
+          "Temporary restroom and shower compounds",
+          "Mobile kitchen and dishwashing operations",
+          "Sites without direct water or sewer connections",
         ],
         specs: [
           { label: "Tank capacity", value: TBD },
           { label: "Connection type", value: TBD },
+        ],
+        faqs: [
+          {
+            q: "How often does a tank need servicing?",
+            a: "The interval depends on tank capacity, fixture use, occupancy and operating hours. We calculate it during site planning and adjust it to measured use.",
+          },
         ],
         relatedPaths: [
           "/support-facility-trailers/restroom-trailers",
@@ -723,6 +812,9 @@ const workforceHousing: PageNode = {
   kicker: "Temporary Facilities",
   summary:
     "Sleeping, sanitation and dining accommodation for crews working away from permanent facilities.",
+  metaTitle: "Temporary Workforce Housing Rentals",
+  metaDescription:
+    "Temporary workforce housing with sleeping, sanitation, laundry and dining facilities planned for remote crews, construction projects and response operations.",
   intro: [
     "Workforce housing covers the whole living side of a remote operation: sleeping units, sanitation, laundry, dining and the utilities that support them.",
     "We plan the compound around headcount, shift rotation, site access and the duration of the programme.",
@@ -730,7 +822,8 @@ const workforceHousing: PageNode = {
   benefits: [
     {
       title: "Planned as a compound",
-      description: "Sleeping, sanitation and dining laid out as one facility rather than separate hires.",
+      description:
+        "Sleeping, sanitation and dining laid out as one facility rather than separate hires.",
     },
     {
       title: "Rotation-aware",
@@ -746,6 +839,20 @@ const workforceHousing: PageNode = {
     "Long-duration construction programmes",
     "Disaster recovery workforces",
     "Government and military deployments",
+  ],
+  faqs: [
+    {
+      q: "What is included in a workforce housing compound?",
+      a: "The scope can include sleeping units, restrooms, showers, laundry, dining, offices, generated power, fresh water and waste handling.",
+    },
+    {
+      q: "How is capacity calculated?",
+      a: "We use peak on-site headcount, shift rotation, rooming requirements and the service interval for each support system.",
+    },
+    {
+      q: "Can the compound expand after deployment?",
+      a: "Yes. The initial layout can reserve access and utility capacity for additional sleeping or support units as the workforce changes.",
+    },
   ],
   children: [
     svc(
@@ -765,8 +872,42 @@ const workforceHousing: PageNode = {
       "Workforce Housing Facilities",
       "Complete accommodation compounds including sanitation, dining and support units.",
       {
+        metaTitle: "Temporary Workforce Housing Facilities",
+        metaDescription:
+          "Deploy a complete temporary workforce housing facility with sleeping, sanitation, laundry, dining and site utilities coordinated under one plan.",
         intro: [
           "A full housing facility bundles sleeping units with restroom, shower, laundry and dining capacity, plus the utility infrastructure to run them.",
+        ],
+        benefits: [
+          {
+            title: "One coordinated layout",
+            description: "Housing, dining, sanitation and service routes are planned together.",
+          },
+          {
+            title: "Capacity by shift",
+            description: "Beds and support facilities are matched to rotations and peak occupancy.",
+          },
+          {
+            title: "Scalable deployment",
+            description:
+              "Additional modules can be added without rebuilding the entire compound plan.",
+          },
+        ],
+        applications: [
+          "Construction and infrastructure projects",
+          "Energy, mining and industrial sites",
+          "Emergency and disaster recovery workforces",
+          "Government and defence programmes",
+        ],
+        faqs: [
+          {
+            q: "Can the facility operate without permanent utilities?",
+            a: "Yes. Generated power, delivered or treated water, waste holding and scheduled servicing can be included in the deployment plan.",
+          },
+          {
+            q: "Who coordinates delivery and installation?",
+            a: "Our team coordinates unit sequencing, positioning and connection requirements against the approved site layout.",
+          },
         ],
         relatedPaths: [
           "/temporary-facilities/base-camp-facilities",
@@ -779,8 +920,43 @@ const workforceHousing: PageNode = {
       "Remote Workforce Housing",
       "Self-sufficient accommodation for sites with no permanent utilities or services.",
       {
+        metaTitle: "Remote Workforce Housing Rentals",
+        metaDescription:
+          "Remote workforce housing for isolated projects, with sleeping, sanitation, dining, power, water, waste and resupply requirements planned as one system.",
         intro: [
           "Remote housing is planned for isolation: generated power, hauled or treated water, waste holding, and supply intervals that match how often vehicles can reach site.",
+        ],
+        benefits: [
+          {
+            title: "Self-sufficient utilities",
+            description: "Power, water and waste systems are sized around occupancy and access.",
+          },
+          {
+            title: "Resupply-aware planning",
+            description:
+              "Storage and service intervals reflect road, weather and delivery constraints.",
+          },
+          {
+            title: "Crew welfare in one plan",
+            description:
+              "Sleeping, washing, laundry and meals are coordinated for the same rotation.",
+          },
+        ],
+        applications: [
+          "Remote energy and mining sites",
+          "Infrastructure projects away from towns",
+          "Disaster recovery and utility restoration",
+          "Government field operations",
+        ],
+        faqs: [
+          {
+            q: "How far in advance should a remote camp be planned?",
+            a: "Start as soon as headcount, access and operating dates are known. Remote utilities and delivery sequencing often control the lead time.",
+          },
+          {
+            q: "Can units be relocated during a project?",
+            a: "Towable and modular units can be relocated when the route, foundations and utility reconnection are planned in advance.",
+          },
         ],
         relatedPaths: [
           "/temporary-facilities/remote-camp-facilities",
@@ -827,8 +1003,26 @@ const temporaryFacilities: PageNode = {
       "Temporary Facility Rentals",
       "Flexible rental terms across the full temporary facility range.",
       {
+        metaTitle: "Temporary Facility Rentals Nationwide",
+        metaDescription:
+          "Rent temporary kitchens, sanitation, workforce housing and office facilities for short- or long-term projects, delivered and coordinated nationwide.",
         intro: [
           "Rental terms run from short-term event support to multi-year project deployments, across kitchens, sanitation, housing and offices.",
+        ],
+        benefits: [
+          {
+            title: "One project schedule",
+            description:
+              "Delivery, connection, servicing and collection follow your operating dates.",
+          },
+          {
+            title: "Flexible rental duration",
+            description: "Short emergency hires and multi-year project terms are both available.",
+          },
+          {
+            title: "Mixed facility packages",
+            description: "Kitchen, sanitation, housing and office units can share one site plan.",
+          },
         ],
         relatedPaths: [
           "/temporary-facilities/workforce-housing",
@@ -883,14 +1077,34 @@ const temporaryFacilities: PageNode = {
       "Modular Office Trailers",
       "Site offices, meeting rooms and welfare space in modular units.",
       {
+        metaTitle: "Modular Office Trailer Rentals",
+        metaDescription:
+          "Rent modular office trailers for project teams, meetings and site welfare, with layout, delivery, utility connections and access planned nationwide.",
         intro: [
           "Modular office trailers give project teams desks, meeting space and welfare facilities on site from day one.",
         ],
-        specs: [...trailerSpecs()],
-        relatedPaths: [
-          "/temporary-facilities/command-center-trailers",
-          "/industries/construction",
+        benefits: [
+          {
+            title: "Ready-to-use workspace",
+            description: "Layouts support desks, briefings, storage and daily site administration.",
+          },
+          {
+            title: "Flexible configurations",
+            description: "Individual units or linked offices can scale with the project team.",
+          },
+          {
+            title: "Coordinated site placement",
+            description:
+              "Access, power, data routes and welfare connections are planned before delivery.",
+          },
         ],
+        applications: [
+          "Construction project offices",
+          "Industrial shutdown coordination",
+          "Temporary administration and meeting space",
+        ],
+        specs: [...trailerSpecs()],
+        relatedPaths: ["/temporary-facilities/command-center-trailers", "/industries/construction"],
       },
     ),
     svc(
@@ -898,8 +1112,32 @@ const temporaryFacilities: PageNode = {
       "Command Center Trailers",
       "Coordination and communications space for incidents and large operations.",
       {
+        metaTitle: "Mobile Command Center Trailer Rentals",
+        metaDescription:
+          "Rent a mobile command center trailer for incident coordination, briefings and communications, with rapid delivery and site setup planned nationwide.",
         intro: [
           "Command center trailers provide a controlled environment for incident coordination, briefings and communications equipment.",
+        ],
+        benefits: [
+          {
+            title: "Central operating picture",
+            description: "Dedicated space keeps briefings, communications and decisions together.",
+          },
+          {
+            title: "Rapidly deployable",
+            description:
+              "Towable units can be positioned near the active operation when time matters.",
+          },
+          {
+            title: "Support facilities available",
+            description:
+              "Power, welfare, sanitation and rest areas can be added to the same deployment.",
+          },
+        ],
+        applications: [
+          "Emergency operations and incident command",
+          "Government and public works projects",
+          "Large construction and industrial sites",
         ],
         relatedPaths: [
           "/specialty-solutions/emergency-response-facilities",
@@ -912,8 +1150,33 @@ const temporaryFacilities: PageNode = {
       "Remote Camp Facilities",
       "Self-contained camps for locations without power, water or waste infrastructure.",
       {
+        metaTitle: "Remote Camp Facility Rentals",
+        metaDescription:
+          "Deploy a self-contained remote camp with workforce housing, dining, sanitation, power, water and waste systems planned for isolated project sites.",
         intro: [
           "Remote camps are planned as closed systems, with generated power, water treatment or hauling, waste holding and resupply intervals matched to site access.",
+        ],
+        benefits: [
+          {
+            title: "Closed-loop planning",
+            description: "Utilities and servicing are sized for the people and equipment on site.",
+          },
+          {
+            title: "Access-led logistics",
+            description:
+              "Delivery order and resupply intervals reflect the route and operating season.",
+          },
+          {
+            title: "Complete crew support",
+            description:
+              "Housing, sanitation, laundry, dining and operations space work as one camp.",
+          },
+        ],
+        applications: [
+          "Mining, energy and exploration projects",
+          "Remote infrastructure construction",
+          "Emergency response base camps",
+          "Government and defence field operations",
         ],
         relatedPaths: [
           "/temporary-facilities/workforce-housing/remote-workforce-housing",
@@ -964,8 +1227,43 @@ const specialtySolutions: PageNode = {
       "Emergency Response Facilities",
       "Command, welfare and sanitation facilities for active incident operations.",
       {
+        metaTitle: "Emergency Response Facility Rentals",
+        metaDescription:
+          "Deploy command, kitchen, sanitation and crew-welfare facilities for emergency operations, with rapid delivery and self-sufficient site support nationwide.",
         intro: [
           "Response facilities support the people running an incident: coordination space, rest and welfare, sanitation and hot food.",
+        ],
+        benefits: [
+          {
+            title: "Priority deployment planning",
+            description:
+              "Critical units, access and utilities are sequenced around the operating deadline.",
+          },
+          {
+            title: "Self-sufficient options",
+            description:
+              "Power, water and waste systems can support sites with damaged infrastructure.",
+          },
+          {
+            title: "One support package",
+            description: "Command, feeding, sanitation and crew welfare are coordinated together.",
+          },
+        ],
+        applications: [
+          "Disaster response and mass care",
+          "Utility restoration operations",
+          "Incident command and responder support",
+          "Temporary shelter and feeding sites",
+        ],
+        faqs: [
+          {
+            q: "Which facilities should deploy first?",
+            a: "The sequence follows the incident plan, but command, sanitation, handwashing and initial feeding capacity are usually treated as the first operating package.",
+          },
+          {
+            q: "Can the setup expand as the response grows?",
+            a: "Yes. The site plan can reserve circulation and utility capacity for additional kitchen, housing and sanitation units.",
+          },
         ],
         relatedPaths: [
           "/temporary-facilities/command-center-trailers",
@@ -978,8 +1276,40 @@ const specialtySolutions: PageNode = {
       "Military & Government Facilities",
       "Field kitchens, accommodation and sanitation for defence and public agencies.",
       {
+        metaTitle: "Military and Government Facility Rentals",
+        metaDescription:
+          "Temporary kitchens, accommodation, sanitation and command facilities for military and government programmes, with documented delivery and site coordination.",
         intro: [
           "Defence and government deployments are planned around procurement requirements, site security and documented delivery schedules.",
+        ],
+        benefits: [
+          {
+            title: "Documented scope",
+            description:
+              "Equipment, delivery milestones and support responsibilities are confirmed in writing.",
+          },
+          {
+            title: "Controlled site planning",
+            description:
+              "Access, placement and service routes are coordinated with operating restrictions.",
+          },
+          {
+            title: "Integrated field support",
+            description:
+              "Kitchens, housing, sanitation and command space can deploy under one plan.",
+          },
+        ],
+        applications: [
+          "Military training and field operations",
+          "Public agency programmes",
+          "Correctional and institutional continuity",
+          "Emergency management and response",
+        ],
+        faqs: [
+          {
+            q: "Can multiple facility types be procured together?",
+            a: "Yes. A single scope can combine kitchen, sanitation, accommodation, office and utility support around the same delivery schedule.",
+          },
         ],
         relatedPaths: ["/industries/military", "/industries/government"],
       },
@@ -1003,8 +1333,38 @@ const specialtySolutions: PageNode = {
       "Catering Facilities",
       "Production, holding and service facilities for catering contracts of any size.",
       {
+        metaTitle: "Temporary Catering Facility Rentals",
+        metaDescription:
+          "Rent temporary catering facilities with production kitchens, refrigeration, warewashing and service areas configured for contract and event food service.",
         intro: [
           "Catering facilities are configured around the contract: production capacity, holding, plating and service flow.",
+        ],
+        benefits: [
+          {
+            title: "Designed around service volume",
+            description: "Cooking, holding and plating capacity follow the peak meal period.",
+          },
+          {
+            title: "Complete back-of-house flow",
+            description: "Cold storage, preparation, cooking and warewashing are planned together.",
+          },
+          {
+            title: "Short- or long-term rental",
+            description:
+              "Facilities can support a fixed event window or an ongoing catering contract.",
+          },
+        ],
+        applications: [
+          "Contract catering and institutional dining",
+          "Events, festivals and hospitality overflow",
+          "Workforce camps and remote feeding",
+          "Kitchen renovation continuity",
+        ],
+        faqs: [
+          {
+            q: "How is a catering facility sized?",
+            a: "We use peak covers, menu, service style, storage volume, staffing and the available site utilities to set the equipment and layout.",
+          },
         ],
         relatedPaths: [
           "/mobile-kitchens/commercial-kitchen-trailers",
@@ -1031,8 +1391,44 @@ const specialtySolutions: PageNode = {
       "Turnkey Facility Solutions",
       "Single-contract delivery of a complete facility, from survey to demobilisation.",
       {
+        metaTitle: "Turnkey Temporary Facility Solutions",
+        metaDescription:
+          "Coordinate temporary kitchens, sanitation, workforce housing, offices and site utilities through one plan from survey and delivery to demobilisation.",
         intro: [
           "Turnkey delivery covers site survey, layout, equipment specification, delivery, connection, servicing and demobilisation under one contract.",
+        ],
+        benefits: [
+          {
+            title: "One coordinated scope",
+            description:
+              "Equipment, logistics, utilities and service intervals follow one approved plan.",
+          },
+          {
+            title: "Fewer site interfaces",
+            description:
+              "One project team coordinates the temporary facility package and delivery sequence.",
+          },
+          {
+            title: "Planned through demobilisation",
+            description:
+              "Collection, disconnection and site hand-back are considered before installation.",
+          },
+        ],
+        applications: [
+          "Large construction and industrial projects",
+          "Remote workforce and base-camp operations",
+          "Emergency response facilities",
+          "Institutional kitchen continuity",
+        ],
+        faqs: [
+          {
+            q: "What does turnkey delivery include?",
+            a: "The agreed scope can include survey, layout, equipment selection, delivery sequencing, connection planning, servicing and final collection.",
+          },
+          {
+            q: "Can existing site services be used?",
+            a: "Yes. We confirm which power, water and waste services are suitable and add temporary utility support only where it is needed.",
+          },
         ],
         relatedPaths: [
           "/temporary-facilities/base-camp-facilities",
@@ -1057,34 +1453,102 @@ const industries: PageNode = {
     "The same equipment behaves differently depending on the sector it serves. These pages set out which Duo Kitchenware solutions apply to each industry and what usually drives the specification.",
   ],
   children: [
-    industry("construction", "Construction", "Kitchens, welfare and sanitation for active building sites.", [
-      "Construction projects need welfare and food service that move with the programme and satisfy site rules.",
-      "Typical deployments combine modular offices, restroom and handwashing units, and a temporary kitchen where the workforce is fed on site.",
-    ]),
-    industry("healthcare", "Healthcare", "Interim kitchens and sanitation for hospitals and care facilities.", [
-      "Hospital and care catering cannot stop for a refurbishment. Interim kitchens are planned around meal schedules, infection control and restricted site access.",
-    ]),
-    industry("government", "Government", "Facilities for public agencies, programmes and emergency operations.", [
-      "Public sector deployments are shaped by procurement requirements, documented timelines and audit-ready delivery.",
-    ]),
-    industry("military", "Military", "Field kitchens, accommodation and sanitation for defence operations.", [
-      "Defence deployments demand self-sufficient facilities that can be positioned, operated and demobilised on schedule.",
-    ]),
-    industry("disaster-relief", "Disaster Relief", "Rapid feeding, sanitation and shelter support after an event.", [
-      "Relief operations are measured in hours. Emergency kitchens, restroom and shower units, and responder welfare facilities are staged for fast dispatch.",
-    ]),
-    industry("education", "Education", "Campus and school catering continuity during works and peak terms.", [
-      "Schools, colleges and universities use temporary kitchens to keep dining open through refurbishment and to add capacity in peak terms.",
-    ]),
-    industry("events-festivals", "Events & Festivals", "Production kitchens, warewashing and sanitation for live events.", [
-      "Events need capacity that arrives, performs for a fixed window and leaves cleanly. Kitchens, dishwashing and restroom banks are sized to attendance.",
-    ]),
-    industry("remote-workforce", "Remote Workforce", "Self-sufficient catering and accommodation for isolated sites.", [
-      "Remote sites need closed-loop facilities: generated power, managed water and waste, and resupply intervals matched to access.",
-    ]),
-    industry("hospitality", "Hospitality", "Kitchen capacity for hotels, venues and restaurant groups.", [
-      "Hospitality operators use temporary kitchens to protect covers during refurbishment and to add production capacity for peak seasons.",
-    ]),
+    industry(
+      "construction",
+      "Construction",
+      "Kitchens, welfare and sanitation for active building sites.",
+      [
+        "Construction projects need welfare and food service that move with the programme and satisfy site rules.",
+        "Typical deployments combine modular offices, restroom and handwashing units, and a temporary kitchen where the workforce is fed on site.",
+      ],
+    ),
+    industry(
+      "healthcare",
+      "Healthcare",
+      "Interim kitchens and sanitation for hospitals and care facilities.",
+      [
+        "Hospital and care catering cannot stop for a refurbishment. Interim kitchens are planned around meal schedules, infection control and restricted site access.",
+      ],
+    ),
+    industry(
+      "government",
+      "Government",
+      "Facilities for public agencies, programmes and emergency operations.",
+      [
+        "Public sector deployments are shaped by procurement requirements, documented timelines and audit-ready delivery.",
+        "Temporary kitchens, sanitation, offices and accommodation can be combined for correctional continuity, public works, emergency management and field programmes.",
+      ],
+      {
+        metaTitle: "Government Temporary Facility Rentals",
+        metaDescription:
+          "Temporary kitchens, sanitation, offices and workforce facilities for government programmes, correctional continuity and emergency operations nationwide.",
+        benefits: [
+          {
+            title: "Procurement-ready scope",
+            description:
+              "Equipment and responsibilities are documented against the required schedule.",
+          },
+          {
+            title: "Continuity for active facilities",
+            description:
+              "Temporary capacity keeps food service and essential operations running during works.",
+          },
+          {
+            title: "Multi-unit coordination",
+            description:
+              "Kitchen, sanitation, office and housing units can share one delivery plan.",
+          },
+        ],
+      },
+    ),
+    industry(
+      "military",
+      "Military",
+      "Field kitchens, accommodation and sanitation for defence operations.",
+      [
+        "Defence deployments demand self-sufficient facilities that can be positioned, operated and demobilised on schedule.",
+      ],
+    ),
+    industry(
+      "disaster-relief",
+      "Disaster Relief",
+      "Rapid feeding, sanitation and shelter support after an event.",
+      [
+        "Relief operations are measured in hours. Emergency kitchens, restroom and shower units, and responder welfare facilities are staged for fast dispatch.",
+      ],
+    ),
+    industry(
+      "education",
+      "Education",
+      "Campus and school catering continuity during works and peak terms.",
+      [
+        "Schools, colleges and universities use temporary kitchens to keep dining open through refurbishment and to add capacity in peak terms.",
+      ],
+    ),
+    industry(
+      "events-festivals",
+      "Events & Festivals",
+      "Production kitchens, warewashing and sanitation for live events.",
+      [
+        "Events need capacity that arrives, performs for a fixed window and leaves cleanly. Kitchens, dishwashing and restroom banks are sized to attendance.",
+      ],
+    ),
+    industry(
+      "remote-workforce",
+      "Remote Workforce",
+      "Self-sufficient catering and accommodation for isolated sites.",
+      [
+        "Remote sites need closed-loop facilities: generated power, managed water and waste, and resupply intervals matched to access.",
+      ],
+    ),
+    industry(
+      "hospitality",
+      "Hospitality",
+      "Kitchen capacity for hotels, venues and restaurant groups.",
+      [
+        "Hospitality operators use temporary kitchens to protect covers during refurbishment and to add production capacity for peak seasons.",
+      ],
+    ),
     industry(
       "commercial-real-estate",
       "Commercial Real Estate",
@@ -1093,9 +1557,14 @@ const industries: PageNode = {
         "Building owners and managers use temporary kitchens and sanitation to maintain tenant amenities while base-building work proceeds.",
       ],
     ),
-    industry("industrial-projects", "Industrial Projects", "Camp, catering and sanitation support for plants and turnarounds.", [
-      "Turnarounds and shutdowns concentrate a large workforce into a short window, with feeding, sanitation and welfare all scaling at once.",
-    ]),
+    industry(
+      "industrial-projects",
+      "Industrial Projects",
+      "Camp, catering and sanitation support for plants and turnarounds.",
+      [
+        "Turnarounds and shutdowns concentrate a large workforce into a short window, with feeding, sanitation and welfare all scaling at once.",
+      ],
+    ),
   ],
 };
 
@@ -1103,7 +1572,13 @@ const industries: PageNode = {
 /* RESOURCES                                                           */
 /* ------------------------------------------------------------------ */
 
-const post = (slug: string, title: string, date: string, summary: string, body: string[]): PageNode => ({
+const post = (
+  slug: string,
+  title: string,
+  date: string,
+  summary: string,
+  body: string[],
+): PageNode => ({
   slug,
   title,
   kind: "post",
@@ -1295,7 +1770,9 @@ const resources: PageNode = {
       title: "Gallery",
       kind: "resource",
       summary: "Photography of units and deployments, by equipment family.",
-      intro: ["Project and equipment photography. Images are added as they are supplied and cleared."],
+      intro: [
+        "Project and equipment photography. Images are added as they are supplied and cleared.",
+      ],
       relatedPaths: ["/resources/videos", "/mobile-kitchens"],
     },
     {
@@ -1303,7 +1780,9 @@ const resources: PageNode = {
       title: "Videos",
       kind: "resource",
       summary: "Walkthroughs and deployment footage of our units.",
-      intro: ["Unit walkthroughs and deployment footage. New videos are listed here as they are published."],
+      intro: [
+        "Unit walkthroughs and deployment footage. New videos are listed here as they are published.",
+      ],
       relatedPaths: ["/resources/gallery"],
     },
   ],
