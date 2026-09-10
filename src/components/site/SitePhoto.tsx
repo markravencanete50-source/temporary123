@@ -1,8 +1,11 @@
-import { ImagePlaceholder } from "@/components/site/ImagePlaceholder";
-import { photoFor } from "@/lib/photos";
 import { useState } from "react";
 
+import { ImagePlaceholder } from "@/components/site/ImagePlaceholder";
+import { photoFor } from "@/lib/photos";
+
 interface SitePhotoProps {
+  /** Optional direct image source for a specific editorial slot. */
+  source?: string;
   /** Page path used to select the matching photo set. */
   path: string;
   /** Alt text. */
@@ -25,6 +28,7 @@ const ratioClass: Record<string, string> = {
 
 /** Renders real client photography, falling back to a placeholder block. */
 export function SitePhoto({
+  source,
   path,
   label,
   index = 0,
@@ -33,7 +37,7 @@ export function SitePhoto({
   className = "",
   priority = false,
 }: SitePhotoProps) {
-  const src = photoFor(path, index);
+  const src = source ?? photoFor(path, index);
   const [imageFailed, setImageFailed] = useState(false);
 
   if (!src || imageFailed)
@@ -45,9 +49,11 @@ export function SitePhoto({
         src={src}
         alt={label}
         loading={priority ? "eager" : "lazy"}
+        fetchPriority={priority ? "high" : "auto"}
         decoding="async"
         onError={() => setImageFailed(true)}
-        className="h-full w-full object-cover outline-1 -outline-offset-1 outline-primary/10 transition-transform duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transition-none"
+        sizes="(min-width: 1024px) 50vw, 100vw"
+        className="h-full w-full animate-photo-in object-cover outline-1 -outline-offset-1 outline-primary/10 transition-transform duration-700 ease-out group-hover:scale-[1.035] motion-reduce:transition-none"
       />
     </div>
   );

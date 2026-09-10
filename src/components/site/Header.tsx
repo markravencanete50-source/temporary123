@@ -27,7 +27,7 @@ export function Header() {
       <div className="border-b border-line bg-primary text-primary-foreground">
         <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-between gap-2 px-6 py-2.5 label-mono">
           <span className="text-primary-foreground/70">Nationwide deployment · 24/7 dispatch</span>
-          <span className="text-accent">Spec sheets on request</span>
+          <span className="hidden text-accent sm:inline">Spec sheets on request</span>
         </div>
       </div>
 
@@ -40,7 +40,7 @@ export function Header() {
             <span className="grid size-8 place-items-center bg-primary font-display text-lg font-bold text-accent">
               D
             </span>
-            <span className="font-display text-xl font-bold uppercase tracking-wide">
+            <span className="hidden font-display text-xl font-bold uppercase tracking-wide sm:inline">
               Duo <span className="text-steel">Kitchenware</span>
             </span>
           </SiteLink>
@@ -92,14 +92,18 @@ export function Header() {
             <a
               href={phoneHref}
               aria-label={`Call Us 24/7 at ${phoneLabel}`}
-              className="group hidden items-center gap-2 bg-accent px-4 py-2.5 font-display text-sm font-bold uppercase tracking-wider text-accent-foreground shadow-md transition-[background-color,color,box-shadow,transform] hover:-translate-y-0.5 hover:bg-primary hover:text-primary-foreground hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 motion-safe:animate-signal-pulse sm:flex"
+              className="group flex items-center gap-2 bg-accent px-3 py-2.5 font-display text-sm font-bold uppercase tracking-wider text-accent-foreground shadow-md transition-[background-color,color,box-shadow,transform] hover:-translate-y-0.5 hover:bg-primary hover:text-primary-foreground hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 motion-safe:animate-signal-pulse sm:px-4"
             >
               <PhoneCall
                 aria-hidden="true"
                 className="size-4 transition-transform duration-300 group-hover:rotate-[-12deg]"
               />
+              <span className="sm:hidden">Call</span>
+              <span className="hidden sm:inline lg:hidden">Call Us</span>
               <span className="hidden lg:inline">Call Us 24/7</span>
-              <span className="lg:hidden">Call Us</span>
+              <span className="hidden border-l border-current/25 pl-2 2xl:inline">
+                {phoneLabel}
+              </span>
             </a>
             <button
               type="button"

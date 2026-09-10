@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { PhoneCall } from "lucide-react";
 
 import { ImagePlaceholder } from "@/components/site/ImagePlaceholder";
 import { SitePhoto } from "@/components/site/SitePhoto";
@@ -225,6 +226,14 @@ export function QuoteBand({
           >
             Contact Us
           </SiteLink>
+          <a
+            href="tel:+18004435212"
+            aria-label="Call Us 24/7 at +1 (800) 443-5212"
+            className="flex items-center gap-2 border border-accent bg-accent/10 px-7 py-3.5 font-display text-base font-bold uppercase tracking-wider text-accent transition-colors hover:bg-accent hover:text-accent-foreground"
+          >
+            <PhoneCall aria-hidden="true" className="size-4" />
+            Call Us 24/7
+          </a>
         </div>
       </div>
     </section>
