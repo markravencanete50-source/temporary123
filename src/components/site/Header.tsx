@@ -25,7 +25,7 @@ export function Header() {
     <>
       <div className="h-1 w-full rule-gradient" />
       <div className="border-b border-line bg-primary text-primary-foreground">
-        <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-between gap-2 px-6 py-2.5 label-mono">
+        <div className="mx-auto flex max-w-[1600px] flex-wrap items-center justify-between gap-2 px-4 py-2.5 label-mono sm:px-6">
           <span className="text-primary-foreground/70">Nationwide deployment · 24/7 dispatch</span>
           <span className="hidden text-accent sm:inline">Spec sheets on request</span>
         </div>
@@ -35,7 +35,7 @@ export function Header() {
         className="sticky top-0 z-40 border-b border-line bg-background/95 backdrop-blur"
         onMouseLeave={() => setOpenMenu(null)}
       >
-        <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-6 py-4">
+        <div className="mx-auto flex max-w-[1600px] items-center justify-between gap-3 px-4 py-3 sm:px-6">
           <SiteLink href="/" className="flex shrink-0 items-center gap-2.5">
             <span className="grid size-8 place-items-center bg-primary font-display text-lg font-bold text-accent">
               D
@@ -47,7 +47,7 @@ export function Header() {
 
           <nav
             aria-label="Primary"
-            className="hidden items-center gap-5 font-display text-[15px] font-semibold uppercase tracking-wide xl:flex"
+            className="hidden items-center gap-4 whitespace-nowrap font-display text-sm font-semibold uppercase tracking-wide 2xl:flex"
           >
             {primaryNav.map((entry) => (
               <div
@@ -82,17 +82,17 @@ export function Header() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="flex shrink-0 items-center gap-2">
             <SiteLink
               href={quoteCta.path}
-              className="hidden bg-accent px-5 py-2.5 font-display text-sm font-bold uppercase tracking-wider text-accent-foreground transition-colors hover:bg-primary hover:text-primary-foreground sm:inline-block"
+              className="hidden h-12 items-center justify-center whitespace-nowrap bg-accent px-5 font-display text-sm font-bold uppercase tracking-wider text-accent-foreground transition-colors hover:bg-primary hover:text-primary-foreground sm:inline-flex"
             >
               {quoteCta.label}
             </SiteLink>
             <a
               href={phoneHref}
               aria-label={`Call Us 24/7 at ${phoneLabel}`}
-              className="group flex items-center gap-2 bg-accent px-3 py-2.5 font-display text-sm font-bold uppercase tracking-wider text-accent-foreground shadow-md transition-[background-color,color,box-shadow,transform] hover:-translate-y-0.5 hover:bg-primary hover:text-primary-foreground hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 motion-safe:animate-signal-pulse sm:px-4"
+              className="group flex h-12 items-center justify-center gap-2 whitespace-nowrap bg-accent px-3 font-display text-sm font-bold uppercase tracking-wider text-accent-foreground shadow-md transition-[background-color,color,box-shadow,transform] hover:-translate-y-0.5 hover:bg-primary hover:text-primary-foreground hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:px-5"
             >
               <PhoneCall
                 aria-hidden="true"
@@ -101,7 +101,7 @@ export function Header() {
               <span className="sm:hidden">Call</span>
               <span className="hidden sm:inline lg:hidden">Call Us</span>
               <span className="hidden lg:inline">Call Us 24/7</span>
-              <span className="hidden border-l border-current/25 pl-2 2xl:inline">
+              <span className="hidden border-l border-current/25 pl-3 min-[1750px]:inline">
                 {phoneLabel}
               </span>
             </a>
@@ -110,7 +110,7 @@ export function Header() {
               aria-expanded={mobileOpen}
               aria-controls="mobile-nav"
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="border border-line px-4 py-2.5 font-display text-sm font-bold uppercase tracking-wider xl:hidden"
+              className="h-12 border border-line px-4 font-display text-sm font-bold uppercase tracking-wider 2xl:hidden"
             >
               {mobileOpen ? "Close" : "Menu"}
             </button>
@@ -133,8 +133,8 @@ export function Header() {
 function MegaMenu({ entry }: { entry: NavEntry }) {
   const columns = entry.columns ?? [];
   return (
-    <div className="hidden border-t border-line bg-background xl:block">
-      <div className="mx-auto grid max-w-[1400px] grid-cols-12 gap-8 px-6 py-8">
+    <div className="hidden border-t border-line bg-background 2xl:block">
+      <div className="mx-auto grid max-w-[1600px] grid-cols-12 gap-8 px-6 py-8">
         {columns.map((column, i) => (
           <div
             key={column.heading}
@@ -224,7 +224,7 @@ function MobileNav() {
     <nav
       id="mobile-nav"
       aria-label="Mobile"
-      className="border-b border-line bg-background xl:hidden"
+      className="border-b border-line bg-background 2xl:hidden"
     >
       <ul className="mx-auto max-w-[1400px] divide-y divide-line px-6">
         {primaryNav.map((entry) => (
