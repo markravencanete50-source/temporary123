@@ -1,5 +1,6 @@
 import { ImagePlaceholder } from "@/components/site/ImagePlaceholder";
 import { photoFor } from "@/lib/photos";
+import { useState } from "react";
 
 interface SitePhotoProps {
   /** Page path used to select the matching photo set. */
@@ -33,7 +34,9 @@ export function SitePhoto({
   priority = false,
 }: SitePhotoProps) {
   const src = photoFor(path, index);
-  if (!src)
+  const [imageFailed, setImageFailed] = useState(false);
+
+  if (!src || imageFailed)
     return <ImagePlaceholder label={label} ratio={ratio} tone={tone} className={className} />;
 
   return (
@@ -43,6 +46,7 @@ export function SitePhoto({
         alt={label}
         loading={priority ? "eager" : "lazy"}
         decoding="async"
+        onError={() => setImageFailed(true)}
         className="h-full w-full object-cover outline-1 -outline-offset-1 outline-primary/10 transition-transform duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transition-none"
       />
     </div>

@@ -4,7 +4,6 @@ import { SitePhoto } from "@/components/site/SitePhoto";
 import { CardGrid, LinkList, QuoteBand, SectionHeading } from "@/components/site/Sections";
 import { SiteLink } from "@/components/site/SiteLink";
 import { catalog } from "@/data/catalog";
-import { stateNames } from "@/data/locations";
 import { childrenOf, resolvePath } from "@/lib/catalog";
 import { jsonLd, pageMeta, SITE_NAME } from "@/lib/seo";
 
@@ -181,27 +180,18 @@ function Home() {
         <div className="mx-auto max-w-[1400px] px-6 py-16">
           <SectionHeading
             kicker="(g) / Coverage"
-            title="We Serve All States and Cities of the United States"
-            aside={`${stateNames.length} states`}
+            title="Nationwide coverage, focused on real projects"
+            aside="50 states + DC"
           />
-          <ul className="mt-8 grid grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
-            {stateNames.map((state) => (
-              <li key={state}>
-                <SiteLink
-                  href="/service-areas"
-                  className="flex items-center justify-between gap-3 bg-background px-5 py-4 text-sm font-semibold transition-colors hover:bg-secondary hover:text-accent"
-                >
-                  <span>Mobile Kitchen &amp; Trailer Rental in {state}</span>
-                  <span aria-hidden className="label-mono text-steel">
-                    ›
-                  </span>
-                </SiteLink>
-              </li>
-            ))}
-          </ul>
-          <SiteLink href="/service-areas" className="mt-6 inline-block label-mono text-accent">
-            See all cities we serve ›
-          </SiteLink>
+          <div className="mt-8 flex flex-col justify-between gap-6 border-y border-line py-6 md:flex-row md:items-center">
+            <p className="max-w-[62ch] text-lg text-steel text-pretty">
+              We deliver, position and connect temporary kitchens, sanitation units and facility
+              rentals nationwide. Tell us where the project is and what the site needs.
+            </p>
+            <SiteLink href="/service-areas" className="shrink-0 label-mono text-accent">
+              Explore service areas ›
+            </SiteLink>
+          </div>
         </div>
       </section>
 
