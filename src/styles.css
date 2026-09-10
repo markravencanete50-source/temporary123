@@ -1,0 +1,166 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Duo Kitchenware design system — "Glacial Spec Sheet"
+ * Industrial catalog aesthetic: cool paper background, near-black ink,
+ * steel secondary, single signal accent. Square corners, 1px rules.
+ * All colors in oklch. Never hardcode colors in components.
+ */
+
+@theme inline {
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-sans: var(--font-body);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-paper: var(--background);
+  --color-ink: var(--foreground);
+  --color-steel: var(--steel);
+  --color-line: var(--line);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--line);
+  --color-input: var(--line);
+  --color-ring: var(--accent);
+  --color-sidebar: var(--background);
+  --color-sidebar-foreground: var(--foreground);
+  --color-sidebar-primary: var(--primary);
+  --color-sidebar-primary-foreground: var(--primary-foreground);
+  --color-sidebar-accent: var(--accent);
+  --color-sidebar-accent-foreground: var(--accent-foreground);
+  --color-sidebar-border: var(--line);
+  --color-sidebar-ring: var(--accent);
+}
+
+:root {
+  --radius: 0px;
+  --background: oklch(0.968 0.005 236);
+  --foreground: oklch(0.201 0.011 250);
+  --steel: oklch(0.333 0.013 250);
+  --line: oklch(0.201 0.011 250 / 0.12);
+  --card: oklch(0.988 0.003 236);
+  --card-foreground: oklch(0.201 0.011 250);
+  --popover: oklch(0.988 0.003 236);
+  --popover-foreground: oklch(0.201 0.011 250);
+  --primary: oklch(0.201 0.011 250);
+  --primary-foreground: oklch(0.968 0.005 236);
+  --secondary: oklch(0.93 0.006 236);
+  --secondary-foreground: oklch(0.333 0.013 250);
+  --muted: oklch(0.93 0.006 236);
+  --muted-foreground: oklch(0.487 0.014 250);
+  --accent: oklch(0.694 0.156 234);
+  --accent-foreground: oklch(0.201 0.011 250);
+  --destructive: oklch(0.552 0.19 26);
+  --destructive-foreground: oklch(0.988 0.003 236);
+
+  --panel: oklch(0.28 0.012 250);
+  --panel-strong: oklch(0.235 0.012 250);
+  --gradient-panel: linear-gradient(135deg, var(--panel-strong), oklch(0.36 0.014 245));
+  --gradient-rule: linear-gradient(90deg, var(--accent), var(--steel));
+}
+
+@theme inline {
+  --color-panel: var(--panel);
+  --color-panel-strong: var(--panel-strong);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+}
+
+@utility rule-gradient {
+  background: var(--gradient-rule);
+}
+
+@utility panel-gradient {
+  background: var(--gradient-panel);
+}
+
+@utility label-mono {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility animate-rise {
+  animation: rise 0.45s ease both;
+}
+
+@keyframes signal-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent) 0%, transparent);
+  }
+  45% {
+    box-shadow: 0 0 0 6px color-mix(in oklab, var(--accent) 16%, transparent);
+  }
+}
+
+@utility animate-signal-pulse {
+  animation: signal-pulse 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
